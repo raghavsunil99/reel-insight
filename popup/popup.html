@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Reel Insight</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="logo">RI</div>
+    <div style="flex:1">
+      <h1>Reel Insight</h1>
+      <div class="sub" id="sub"></div>
+    </div>
+    <button id="settings" class="btn icon" title="Settings" aria-label="Settings">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+    </button>
+  </header>
+  <nav class="tabs" role="tablist">
+    <button class="tab" data-tab="swipe" role="tab">Saved <span class="count" id="c-swipe"></span></button>
+    <button class="tab" data-tab="autolog" role="tab">Auto log <span class="count" id="c-autolog"></span></button>
+    <button class="tab" data-tab="suggest" role="tab">Suggest</button>
+  </nav>
+
+  <section id="listView">
+    <div class="bar">
+      <select id="filter" aria-label="Filter">
+        <option value="all">All verdicts</option>
+        <option value="recreate">Recreate</option>
+        <option value="maybe">Maybe</option>
+        <option value="skip">Skip</option>
+      </select>
+      <select id="pfilter" aria-label="Platform">
+      <option value="all">All</option>
+      <option value="ig">Instagram</option>
+      <option value="yt-short">YT Shorts</option>
+      <option value="yt-long">YT Videos</option>
+    </select>
+    <select id="sort" aria-label="Sort">
+        <option value="score">Sort: Score</option>
+        <option value="outlier">Sort: Outlier</option>
+        <option value="views">Sort: Views</option>
+        <option value="savedAt">Sort: Recent</option>
+      </select>
+    </div>
+    <main id="list"></main>
+    <footer>
+      <span id="count"></span>
+      <span class="fbtns"><button id="export" class="btn">Export CSV</button> <button id="clear" class="btn danger">Clear all</button></span>
+    </footer>
+  </section>
+
+  <section id="suggestView" hidden>
+    <div class="bar">
+      <select id="range" aria-label="Range">
+        <option value="7">Last 7 days</option>
+        <option value="30">Last 30 days</option>
+        <option value="0">All time</option>
+      </select>
+      <button id="run" class="btn primary">Suggest cheyi</button>
+    </div>
+    <main id="suggest"></main>
+  </section>
+
+  <script src="../src/score.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
